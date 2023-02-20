@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +21,17 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        Storage::deleteDirectory('Imagenes');
+        Storage::makeDirectory('Imagenes');
+
         $this->call(UserSeeder::class);
-    }
+        $this->call(TematicaSeeder::class);
+        $this->call(TipoProductoSeeder::class);
+        $this->call(ProductoSeeder::class);
+        $this->call(PrecioSeeder::class);
+        $this->call(ProductoTematicaSeeder::class);
+        $this->call(ProductoContenedorSeeder::class);
+        $this->call(InventarioSeeder::class);
+        $this->call(ImageSeeder::class);
+            }
 }
